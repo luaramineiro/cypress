@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "cypress": "^10.3.0",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
+  "cypress-cucumber-preprocessor": {
+    "commonPath": "cypress/e2e",
+    "step_definitions": "cypress/support/steps"
+
+  }
+}
