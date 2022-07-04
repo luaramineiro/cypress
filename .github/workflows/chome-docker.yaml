@@ -1,4 +1,4 @@
-sname: Chrome Docker
+name: Chrome Docker
 
 on: push
 
