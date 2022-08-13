@@ -47,6 +47,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
+          # we have already installed all dependencies above
+          install: false
           # Specify Browser since container image is compile with Firefox
           browser: chrome
           record: true
