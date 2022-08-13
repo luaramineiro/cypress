@@ -3,9 +3,31 @@ name: Cypress Tests using Cypress Docker Image
 on: [push]
 
 jobs:
+  install:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v4
+        with:
+          # Disable running of tests within install job
+          runTests: false
+          build: yarn build
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
   cypress-run:
     runs-on: ubuntu-latest
     container: cypress/browsers:node12.18.3-chrome87-ff82
+    needs: install
     strategy:
       fail-fast: false
       matrix:
@@ -15,6 +37,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Download the build folders
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
@@ -22,4 +50,8 @@ jobs:
         with:
           # Specify Browser since container image is compile with Firefox
           browser: chrome
+          record: true
           parallel: true
+          group: 'UI - Chrome'
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
