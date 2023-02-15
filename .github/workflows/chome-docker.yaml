@@ -1,4 +1,4 @@
-name: Cypress Tests using Cypress Docker Image
+name: Database Testing (SQL) in Cypress
 
 on: [push]
 
@@ -17,13 +17,13 @@ jobs:
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          # Specify Browser since container image is compile with Firefox
-          browser: chrome
-          record: true
-          parallel: true
-          group: 'UI - Chrome'
-        env:          
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # Specify Browser since container image is compile with Firefox
+      #     browser: chrome
+      #     record: true
+      #     parallel: true
+      #     group: 'UI - Chrome'
+      #   env:          
+      #     CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

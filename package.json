@@ -1,7 +1,8 @@
 {
   "devDependencies": {
-    "cypress": "^10.4.0",
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "cypress": "^12.5.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "mysql": "^2.18.1"
   },
   "scripts": {
     "cypress:open": "cypress open"
@@ -9,6 +10,5 @@
   "cypress-cucumber-preprocessor": {
     "commonPath": "cypress/e2e",
     "step_definitions": "cypress/support/steps"
-
   }
 }
