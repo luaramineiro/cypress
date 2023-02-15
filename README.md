@@ -1,5 +1,7 @@
 # Database Testing (SQL) in Cypress
 
+Guide to [execute a database query](https://docs.cypress.io/api/commands/task#Allows-a-single-argument-only) in Cypress.
+
 ## MySQL Database setup
 
 We need to create the database to execute the test scenarios.
